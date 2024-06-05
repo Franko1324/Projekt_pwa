@@ -1,35 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Franko Šimunović">
+    <title>Le Parisien</title>
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
 </head>
 <body>
     <header>
-        <img class="logo" src="logo.png" alt="">
-        <hr>
+        <div class="logo">
+            <img src="slike/logo.png" alt="Le Parisien Logo">
+        </div>
         <nav>
             <ul>
-                <li> <a href="#">HOME</a></li>
-                <li> <a href="#">PARISIEN</a></li>
-                <li> <a href="#">VIVRE</a></li>
-                <li> <a href="#">ADMINISTRACIJA</a></li>
+                <li><a href="#Home">HOME</a></li>
+                <li><a href="parisien.html">PARISIEN</a></li>
+                <li><a href="#">VIVRE</a></li>
+                <li><a href="unos.html">ADMINISTRACIJA</a></li>
             </ul>
         </nav>
     </header>
-    <section>
-        <h3>PARISIEN</h3>
-        <article>
-            <img src="slik1.jpg" class="slike">
-        </article>
-
-
-
-
-
-    </section>
+    <main>
+        <section class="category">
+            <h2>Parisien</h2>
+            <div class="articles">
+                <article>
+                    <img src="slike/image1.jpg" alt="Image 1">
+                    <p>«Vos idées pour lEurope» et si on supprimait la directive sur les travailleurs détachés ?</p>
+                </article>
+                <article>
+                    <img src="slike/image2.jpg" alt="Image 2">
+                    <p>«Vos idées pour lEurope» et si on interdisait le glyphosate immédiatement ?</p>
+                </article>
+                <article>
+                    <img src="slike/image3.jpg" alt="Image 3">
+                    <p>«Vos idées pour lEurope» : et si on harmonisait les règles fiscales ?</p>
+                </article>
+            </div>
+        </section>
+        <section class="category">
+            <h2>Vivre Mieux</h2>
+            <div class="articles">
+                <article>
+                    <img src="slike/image4.jpg" alt="Image 4">
+                    <p>À Rouen, des familles relèvent le défi de manger mieux sans dépenser plus</p>
+                </article>
+                <article>
+                    <img src="slike/image5.jpg" alt="Image 5">
+                    <p>Que faire en cas de démission du syndic ?</p>
+                </article>
+                <article>
+                    <img src="slike/image6.jpg" alt="Image 6">
+                    <p>Comment déménager sans se ruiner</p>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© Le Parisien</p>
+    </footer>
 </body>
 </html>
