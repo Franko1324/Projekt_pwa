@@ -1,52 +1,3 @@
-<?php
-session_start();
-include 'connect.php'; 
-
-if (isset($_SESSION['razina']) && $_SESSION['razina'] !== '') {
-    if ($_SESSION['razina'] == 0) {
-        header("Location: index.php");
-        exit(); 
-    } elseif ($_SESSION['razina'] == 1) {
-        header("Location: unos.php");
-        exit();
-    }
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    $username = $_POST['ime'];
-    $firstname = $_POST['prezime'];
-    $lastname = $_POST['korisnicko_ime'];
-    $password = $_POST['lozinka'];
-    $confirm_password = $_POST['plozinka'];
-
-
-    if ($password === $confirm_password) {
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $query = "INSERT INTO korisnici (ime, prezime, korisnicko_ime, lozinka, razina) VALUES (?, ?, ?, ?, 0)";
-
-        $stmt = mysqli_prepare($conn, $query);
-        if ($stmt) {
-            mysqli_stmt_bind_param($stmt, "ssss", $firstname, $lastname,$username, $hashed_password);
-
-            if (mysqli_stmt_execute($stmt)) {
-                echo "Registracija uspjesna";
-                header("location:index.php");
-            } else {
-                echo "Registracija neuspjesna";
-            }
-            mysqli_stmt_close($stmt);
-        } else {
-            echo "Greška u pripremi statementa: " . mysqli_error($conn);
-        }
-        mysqli_close($conn);
-    } else {
-        echo "Lozinke se ne podudaraju!";
-    }
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </ul>
         </nav>
     </header>
-    <form method="post">
+    <form method="post" action="registacija.php">
             <input type="text" name="ime" placeholder="Ime" required><br>
             <input type="text" name="prezime" placeholder="Prezime" required><br>
             <input type="text" name="korisnicko_ime" placeholder="Korisničko ime" required><br>

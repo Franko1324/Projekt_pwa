@@ -79,7 +79,7 @@ $conn->close();
                         echo "<p>" . $row["sazetak"] . "</p>";
                         echo "</a>";
                         if (isset($_SESSION['razina']) && $_SESSION['razina'] == 1) {
-                            echo "<form method='post'> ";
+                            echo "<form method='post' class='forma'>";
                             echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
                             echo "<a href='skripta.php?id=" . $row["id"] . "'class='uredibrisi'>Uredi</a>";
                             echo "<input  type='hidden' name='id' value='" . $row["id"] . "'>";
@@ -118,7 +118,7 @@ $conn->close();
                         echo "<p>" . $row["sazetak"] . "</p>";
                         echo "</a>";
                         if (isset($_SESSION['razina']) && $_SESSION['razina'] == 1) {
-                            echo "<form method='post'>";
+                            echo "<form method='post' class='forma'>";
                             echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
                             echo "<a href='skripta.php?id=" . $row["id"] . "'class='uredibrisi'>Uredi</a>";
                             echo "<input  type='hidden' name='id' value='" . $row["id"] . "'>";

@@ -33,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             $file_directory = $target_file;
     
             echo '<script>alert("Uspjesan upload")</script>'; 
+            header("Location: index.php");
         };
     }
     

@@ -45,10 +45,14 @@ $conn->close();
     </header>
     <section class="clanak">
         <h2><?php echo htmlspecialchars($clanak['kategorija']); ?></h2>
+        <hr>
         <h3><?php echo htmlspecialchars($clanak['naslov']); ?></h3>
         <img src="<?php echo htmlspecialchars($clanak['slika']); ?>" style="width:800px;" class=""slika1" alt="<?php echo htmlspecialchars($clanak['naslov']); ?>">
         <p><?php echo nl2br(htmlspecialchars($clanak['tekst'])); ?></p>
     </section>
 </body>
+<footer>
+        <p>© Le Parisien</p>
+    </footer>
 </html>
 
