@@ -1,7 +1,27 @@
 <?php
+
 session_start();
 
+include 'connect.php';
 
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['obrisi'])) {
+    
+    $id = $_POST["id"];
+    
+    $sql = "DELETE FROM clanci WHERE id=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id);
+
+    if ($stmt->execute()) {
+        echo "Članak je uspješno obrisan.";
+    } else {
+        echo "Greška: " . $conn->error;
+    }
+    $stmt->close();
+}
+
+$conn->close();
 ?>
 
 
@@ -58,6 +78,14 @@ session_start();
                         echo "<h3>" . $row["naslov"] . "</h3>";
                         echo "<p>" . $row["sazetak"] . "</p>";
                         echo "</a>";
+                        if (isset($_SESSION['razina']) && $_SESSION['razina'] == 1) {
+                            echo "<form method='post'> ";
+                            echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
+                            echo "<a href='skripta.php?id=" . $row["id"] . "'class='uredibrisi'>Uredi</a>";
+                            echo "<input  type='hidden' name='id' value='" . $row["id"] . "'>";
+                            echo "<input class='uredibrisi' type='submit' name='obrisi' value='Obriši'>";
+                            echo "</form>";
+                        }
                         echo "</div>";
                     }
                 } else {
@@ -89,6 +117,14 @@ session_start();
                         echo "<h3>" . $row["naslov"] . "</h3>";
                         echo "<p>" . $row["sazetak"] . "</p>";
                         echo "</a>";
+                        if (isset($_SESSION['razina']) && $_SESSION['razina'] == 1) {
+                            echo "<form method='post'>";
+                            echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
+                            echo "<a href='skripta.php?id=" . $row["id"] . "'class='uredibrisi'>Uredi</a>";
+                            echo "<input  type='hidden' name='id' value='" . $row["id"] . "'>";
+                            echo "<input class='uredibrisi' type='submit' name='obrisi' value='Obriši'>";
+                            echo "</form>";
+                        }
                         echo "</div>";
                     }
                 } else {

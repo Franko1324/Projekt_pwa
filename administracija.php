@@ -1,15 +1,14 @@
 <?php
 session_start();
-include 'connect.php';
+include 'connect.php'; 
 
 if (isset($_SESSION['razina']) && $_SESSION['razina'] !== '') {
-    // Redirect based on the value of 'razina'
     if ($_SESSION['razina'] == 0) {
         header("Location: index.php");
-        exit(); // Stop further execution
+        exit(); 
     } elseif ($_SESSION['razina'] == 1) {
         header("Location: unos.php");
-        exit(); // Stop further execution
+        exit();
     }
 }
 

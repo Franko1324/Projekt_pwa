@@ -139,3 +139,14 @@ textarea{
     padding:8px;
     box-sizing: border-box;
 }
+
+.uredibrisi{
+    margin: 0 auto;
+    font-size: 12px;
+    background-color: red;
+    border: solid 1px black;
+    text-decoration: none;
+    color: white;
+    padding:10px;
+    width: 70px;
+}
