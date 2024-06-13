@@ -18,7 +18,7 @@
             </ul>
         </nav>
     </header>
-    <form method="post" action="registacija.php">
+    <form method="post" action="registracija.php">
             <input type="text" name="ime" placeholder="Ime" required><br>
             <input type="text" name="prezime" placeholder="Prezime" required><br>
             <input type="text" name="korisnicko_ime" placeholder="Korisničko ime" required><br>
