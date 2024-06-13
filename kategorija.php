@@ -1,4 +1,6 @@
 <?php
+
+session_start();
 include 'connect.php';
 
 $kategorija = isset($_GET['kategorija']) ? $conn->real_escape_string($_GET['kategorija']) : '';
@@ -44,6 +46,15 @@ $conn->close();
                 <li><a href="kategorija.php?kategorija=Parisien">PARISIEN</a></li>
                 <li><a href="kategorija.php?kategorija=Vivre">VIVRE</a></li>
                 <li><a href="administracija.php">ADMINISTRACIJA</a></li>
+                <?php
+                    if (isset($_SESSION['razina']) && $_SESSION['razina'] !== '') {
+            
+                    echo '<li><a href="odjava.php">ODJAVA,'.$_SESSION['korisnicko_ime'].'</a></li>';
+                    } 
+            
+     
+  
+                ?>
             </ul>
         </nav>
     </header>
@@ -60,12 +71,14 @@ $conn->close();
                             echo "<h3>" . $row["naslov"] . "</h3>";
                             echo "<p>" . $row["sazetak"] . "</p>";
                             echo "</a>";
-                            echo "<form method='post' class='forma'> ";
-                            echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
-                            echo "<a href='skripta.php?id=" . $row["id"] . "'class='uredibrisi'>Uredi</a>";
-                            echo "<input  type='hidden' name='id' value='" . $row["id"] . "'>";
-                            echo "<input class='uredibrisi' type='submit' name='obrisi' value='Obriši'>";
-                            echo "</form>";
+                            if (isset($_SESSION['razina']) && $_SESSION['razina'] == 1) {
+                                echo "<form method='post' class='forma'>";
+                                echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
+                                echo "<a href='skripta.php?id=" . $row["id"] . "'class='uredibrisi'>Uredi</a>";
+                                echo "<input  type='hidden' name='id' value='" . $row["id"] . "'>";
+                                echo "<input class='uredibrisi' type='submit' name='obrisi' value='Obriši'>";
+                                echo "</form>";
+                            }
                         echo "</div>";
                     }
                 } else {
